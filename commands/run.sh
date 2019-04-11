@@ -136,6 +136,11 @@ if [[ "$(plugin_read_config RM "true")" == "true" ]]; then
   run_params+=(--rm)
 fi
 
+# Optionally enable mapping service ports to host
+if [[ "$(plugin_read_config SERVICE_PORTS "false")" == "true" ]]; then
+  run_params+=(--service-ports)
+fi
+
 run_params+=("$run_service")
 
 if [[ "${BUILDKITE_PLUGIN_DOCKER_COMPOSE_REQUIRE_PREBUILD:-}" =~ ^(true|on|1)$ ]] && [[ ! -f "$override_file" ]] ; then

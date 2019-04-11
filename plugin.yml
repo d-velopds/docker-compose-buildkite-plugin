@@ -68,6 +68,8 @@ configuration:
       type: string
     rm:
       type: boolean
+    service-ports:
+      type: boolean
   oneOf:
     - required:
       - run
